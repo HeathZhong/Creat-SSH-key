@@ -1,0 +1,18 @@
+配置账户：
+git config --global user.name "Heath"
+git config --global user.email "heathzhong@163.com"
+HOME/UESR/下新建.ssh文件
+cd ~/.
+mkdir .ssh
+生成本地ssh密钥
+sudo ssh-keygen -t rsa -C "heathzhong@163.com"   //选择保存在id_rsa文件中
+获取SSH key
+cat id_rsa.pub   //将复制下来的存放到远程仓库中
+以github为例
+ssh -T git@github.com
+正常会有如下文字：Hi HeathZhong! You've successfully authenticated, but GitHub does not provide shell access.
+
+注：如果出现下面文字：Load key "/home/heathzhong/.ssh/id_rsa": Permission denied
+Permission denied (publickey).
+说明秘钥权限赋予不够，提高权限即可，如下：
+sudo chmod 644 *
